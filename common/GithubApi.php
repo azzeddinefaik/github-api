@@ -6,7 +6,7 @@ require_once __DIR__ . '/global.php';
  * Class PRReviews
  * @desc this class is used to review prs
  */
-class PRReviews
+class GithubApi
 {
 
     /**
@@ -40,7 +40,7 @@ class PRReviews
     /**
      * @param null $apiToken
      *
-     * @return PRReviews
+     * @return GithubApi
      */
     public function setApiToken($apiToken)
     {
@@ -98,7 +98,7 @@ class PRReviews
     /**
      * @param null $number
      *
-     * @return PRReviews
+     * @return GithubApi
      */
     public function setRepos($repos)
     {
@@ -118,7 +118,7 @@ class PRReviews
     /**
      * @param null $action
      *
-     * @return PRReviews
+     * @return GithubApi
      */
     public function setAction($action)
     {
@@ -161,44 +161,6 @@ class PRReviews
         $this->body = $body;
 
         return $this;
-    }
-
-    /**
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     */
-    public function reviewPullRequest()
-    {
-        $response = $this->getClient()->request( 'POST', $this->baseUrl . "/repos/tajawal/" . $this->getRepos() . "/pulls/" . $this->getNumder() . "/reviews", [
-            'headers' => [
-                'Authorization' => 'Basic ' . $this->getApiToken(),
-                'Accept'        => 'application/vnd.github.black-cat-preview+json',
-            ],
-            'json'    => [
-                "body"  => $this->getBody(),
-                "event" => $this->getAction(),
-            ],
-        ] );
-
-        return $response;
-    }
-
-    /**
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     */
-    public function commentPullRequest()
-    {
-        $response = $this->getClient()->request( 'POST', $this->baseUrl . "/repos/tajawal/" . $this->getRepos() . "/pulls/" . $this->getNumder() . "/comments", [
-            'headers' => [
-                'Authorization' => 'Basic ' . $this->getApiToken(),
-                'Accept'        => 'application/vnd.github.black-cat-preview+json',
-            ],
-            'json'    => [
-                "body"  => $this->getBody(),
-                "event" => $this->getAction(),
-            ],
-        ] );
-
-        return $response;
     }
 
     /**

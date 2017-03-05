@@ -3,7 +3,7 @@
 /**
  * Include PRReviews Class
  */
-require_once __DIR__ . '/common/PRReview.php';
+require_once __DIR__ . '/common/GithubApi.php';
 
 /**
  * @usage :
@@ -11,14 +11,14 @@ require_once __DIR__ . '/common/PRReview.php';
 $contents = null;
 try {
 
-    $token       = '5ed1930b05affsfsdfsdfb000766f9df8a41c4384d12dd';
+    $token       = '00699542bd87f110ef4e65bd08df61f6c158ddd7';
 
     // prepare PRReviews Objects with data
-    $reviewPR = (new PRReviews())
+    $githubClient = (new GithubApi())
         ->setApiToken( $token )
     ;
     // Send review request
-    $response = $reviewPR
+    $response = $githubClient
         ->getUsersInfos("azzeddinefaik");
     $jsonData = json_decode($response->getBody()->getContents());
 
