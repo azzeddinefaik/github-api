@@ -12,7 +12,7 @@ require_once __DIR__ . '/common/PrepareReview.php';
 $contents = null;
 try {
 
-    $token       = '5ed1930b05afb000766f97a48d8a41c4384d12dd';
+    $token       = '5ed1930b05affsfsdfsdfb000766f9df8a41c4384d12dd';
 
     // prepare PRReviews Objects with data
     $reviewPR = (new PRReviews())
