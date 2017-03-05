@@ -1,0 +1,21 @@
+{
+  "name": "devops/teamcity",
+  "description": " Tools for Deployment and configuration",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Azzeddine Faik",
+      "email": "azz@tajawal.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "dev-master",
+    "kevinlebrun/colors.php": "dev-master",
+    "vlucas/phpdotenv": "dev-master",
+    "graylog2/gelf-php": "~1.2",
+    "fluent/logger": "v1.0.0"
+  },
+  "repositories": [
+  ]
+}
