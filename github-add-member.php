@@ -9,7 +9,7 @@ require_once __DIR__ . '/common/PrepareReview.php';
 /**
  * @usage :
  *
- *  php github-review-linting.php 696  dd4c88604ac52485e329efc0319d96c11ca47978  693  'COMMENT'
+ *  php github-review-linting.php 696  dd4c88604ac524sdsds85e329efc0319d96c11ca  693  'COMMENT'
  *
  *  pull request number :  The PR number which is to be built : 696\
  *  github token :  used to authenticate to github api e.g: dd4c88604ac52485e329efc0319d96c11ca47978
@@ -20,7 +20,7 @@ require_once __DIR__ . '/common/PrepareReview.php';
 $contents = null;
 try {
 
-    // 'a96fb816babd7f679eda671c21de0fa47380a97e'
+    // 'dd4c88604ac524sdsds85e329efc0319d96c11ca'
     $token       = 'sdfsdfsdfdsfsdfsdfdsfdsfdsfds';
 
     // prepare body text for linting
