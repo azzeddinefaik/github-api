@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Include PRReviews Class
+ * Include xk Class
  */
 require_once __DIR__ . '/common/GithubApi.php';
 
@@ -13,11 +13,11 @@ try {
 
     $token       = '00699542bd87f110ef4e65bd08df61f6c158ddd7';
 
-    // prepare PRReviews Objects with data
+    // prepare  Objects with data
     $githubClient = (new GithubApi())
         ->setApiToken( $token )
     ;
-    // Send review request
+    // Send  request
     $response = $githubClient
         ->getUsersInfos("azzeddinefaik");
     $jsonData = json_decode($response->getBody()->getContents());
