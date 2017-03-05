@@ -4,7 +4,6 @@
  * Include PRReviews Class
  */
 require_once __DIR__ . '/common/PRReview.php';
-require_once __DIR__ . '/common/PrepareReview.php';
 
 /**
  * @usage :
