@@ -17,5 +17,10 @@
     "fluent/logger": "v1.0.0"
   },
   "repositories": [
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
 }
