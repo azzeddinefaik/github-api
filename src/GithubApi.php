@@ -1,9 +1,12 @@
 <?php
-require_once __DIR__ . '/global.php';
 
+namespace App;
+
+use GuzzleHttp\Client;
 
 /**
  * Class PRReviews
+ *
  * @desc this class is used to review prs
  */
 class GithubApi
@@ -13,36 +16,31 @@ class GithubApi
      * @var null
      */
     protected $apiToken = null;
-    protected $client   = null;
-    protected $baseUrl  = 'https://api.github.com';
-    protected $repos    = null;
 
-    protected $numder         = null;
+    /** @var \GuzzleHttp\Client */
+    protected $client = null;
+
+    protected $baseUrl        = 'https://api.github.com';
+    protected $repos          = null;
     protected $action         = null;
     protected $requestTimeout = 15;
     protected $body           = null;
 
 
-    public function __construct()
-    {
-        return $this;
-    }
-
-
     /**
-     * @return null
+     * @return string
      */
-    public function getApiToken()
+    public function getApiToken(): string
     {
-        return $this->apiToken;
+        return (string)$this->apiToken;
     }
 
     /**
-     * @param null $apiToken
+     * @param string $apiToken
      *
-     * @return GithubApi
+     * @return $this
      */
-    public function setApiToken($apiToken)
+    public function setApiToken(string $apiToken)
     {
         $this->apiToken = $apiToken;
 
@@ -50,7 +48,7 @@ class GithubApi
     }
 
     /**
-     * @return GuzzleHttp\Client;
+     * @return Client;
      */
     public function getClient()
     {
@@ -60,11 +58,11 @@ class GithubApi
     }
 
     /**
-     * @return GuzzleHttp\Client;
+     * @return Client;
      */
     public function setClient()
     {
-        if ($this->client instanceof GuzzleHttp\Client) {
+        if ($this->client instanceof Client) {
             return $this->client;
         }
 
@@ -72,37 +70,45 @@ class GithubApi
     }
 
     /**
-     * @return \GuzzleHttp\Client
+     * @return Client
      */
     public function initClient()
     {
-        $client = new \GuzzleHttp\Client( [
+        $client = new Client([
             // Base URI is used with relative requests
-            'base_uri' => $this->baseUrl,
+            'base_uri' => $this->getBaseUrl(),
             // You can set any number of default request options.
             'timeout'  => $this->requestTimeout,
             'verify'   => false,
-        ] );
+        ]);
 
         return $client;
     }
 
     /**
-     * @return null
+     * @return string
      */
-    public function getRepos()
+    public function getBaseUrl(): string
     {
-        return $this->repos;
+        return (string)$this->baseUrl;
     }
 
     /**
-     * @param null $number
-     *
-     * @return GithubApi
+     * @return array
      */
-    public function setRepos($repos)
+    public function getRepos(): array
     {
-        $this->repos = $repos;
+        return (array)$this->repos;
+    }
+
+    /**
+     * @param array $repos
+     *
+     * @return $this
+     */
+    public function setRepos(array $repos)
+    {
+        $this->repos = (array)$repos;
 
         return $this;
     }
@@ -127,23 +133,6 @@ class GithubApi
         return $this;
     }
 
-    /**
-     * @return null
-     */
-    public function getNumder()
-    {
-        return $this->numder;
-    }
-
-    /**
-     * @param null $numder
-     */
-    public function setNumder($numder)
-    {
-        $this->numder = $numder;
-
-        return $this;
-    }
 
     /**
      * @return null
@@ -154,7 +143,7 @@ class GithubApi
     }
 
     /**
-     * @param null $body
+     * @param  $body
      */
     public function setBody($body)
     {
@@ -164,16 +153,18 @@ class GithubApi
     }
 
     /**
+     * @param string $username
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function getUsersInfos($username = "azzeddine")
+    public function getUsersInfo(string $username)
     {
-        $response = $this->getClient()->request( 'GET', $this->baseUrl . "/users/".$username, [
+        $response = $this->getClient()->request('GET', $this->baseUrl . "/users/" . $username, [
             'headers' => [
                 'Authorization' => 'Basic ' . $this->getApiToken(),
                 'Accept'        => 'application/vnd.github.black-cat-preview+json',
             ],
-        ] );
+        ]);
 
         return $response;
     }
