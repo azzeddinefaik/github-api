@@ -25,6 +25,15 @@ class GithubApi
     protected $action         = null;
     protected $requestTimeout = 15;
     protected $body           = null;
+    protected $test           = null;
+    
+    /**
+     * @return string
+     */
+    public function getApiToken(): string
+    {
+        return (string)$this->apiToken;
+    }
 
 
     /**
@@ -46,10 +55,6 @@ class GithubApi
 
         return $this;
     }
-    
-    
-    
-    
 
     /**
      * @return Client;
@@ -61,6 +66,16 @@ class GithubApi
         return $this->client;
     }
 
+     /**
+     * @return Client;
+     */
+    public function getClient()
+    {
+        $this->setClient();
+
+        return $this->client;
+    }
+  
     /**
      * @return Client;
      */
