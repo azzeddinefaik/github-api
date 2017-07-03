@@ -25,6 +25,8 @@ class GithubApi
     protected $action         = null;
     protected $requestTimeout = 15;
     protected $body           = null;
+    protected $test           = null;
+    
 
 
     /**
